@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Automation | aws-reStart-Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Animation */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans relative overflow-x-hidden selection:bg-purple-200 selection:text-purple-900">
+
+    <!-- Background Blobs -->
+    <div class="blob bg-blue-300/30 w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply"></div>
+    <div class="blob bg-purple-300/30 w-96 h-96 rounded-full bottom-0 right-0 mix-blend-multiply"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Back to Modules Link -->
+                <a href="/Databases/database.html" class="flex items-center space-x-2 group hover:opacity-80 transition">
+                    <div class="p-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-lg text-white shadow-lg">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Back to Modules</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-4">
+                   <span class="text-slate-500 text-sm">/ compute / linux</span>
+                </div>
+
+                <a href="https://github.com/Neo2701-saint/AWS-reStart-Journey" target="_blank" class="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition shadow-md flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-blue-100 text-blue-600 rounded-xl">
+                <i class="fa-brands fa-linux text-3xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-slate-900">Linux Automation Lab</h1>
+        </div>
+        <p class="text-xl text-slate-600 max-w-3xl">
+            A detailed walkthrough of the Bash scripting challenge, covering file creation automation, permission management, and output sorting.
+        </p>
+    </header>
+
+    <!-- Content Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-12">
+        
+        <!-- STEP 1: ASSIGNMENT -->
+        <section class="glass rounded-2xl p-8 border-t-4 border-blue-500 shadow-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                The Assignment Brief
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4">
+                    <p class="text-slate-600 leading-relaxed">
+                        The objective was to create a script that generates 25 distinct text files named sequentially (e.g., <code>Neo1.txt</code>, <code>Neo2.txt</code>...). This tests the ability to use loops and variables within a Bash shell environment.
+                    </p>
+                    <ul class="list-disc list-inside text-slate-500 space-y-1 bg-slate-50 p-4 rounded-lg">
+                        <li>Connect via SSH to EC2 Instance</li>
+                        <li>Create working directory</li>
+                        <li>Initialize script file</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900 p-2 rounded-xl shadow-lg transform transition hover:scale-[1.02] duration-300">
+                    <img src="/Databases/Linux assets/Screenshot 2025-11-21 155307.png" alt="Linux Assignment Brief" class="w-full h-auto rounded-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: SCRIPTING -->
+        <section class="glass rounded-2xl p-8 border-t-4 border-purple-500 shadow-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                <span class="bg-purple-100 text-purple-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                Writing the Script
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-slate-900 p-2 rounded-xl shadow-lg transform transition hover:scale-[1.02] duration-300 order-2 lg:order-1">
+                    <img src="/Databases/Linux assets/Screenshot 2025-11-21 155323.png" alt="Nano Editor Script" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="space-y-4 order-1 lg:order-2">
+                    <p class="text-slate-600 leading-relaxed">
+                        Using the <code>nano</code> editor, I wrote a simple <code>for</code> loop. The script iterates from 1 to 25, appending the iterator number to my name variable to create unique filenames.
+                    </p>
+                    <div class="bg-slate-800 text-slate-200 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                        <code>chmod +x create_files.sh</code>
+                    </div>
+                    <p class="text-sm text-slate-500">
+                        <i class="fa-solid fa-circle-info mr-1 text-purple-500"></i> Don't forget to make the script executable before running it!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: EXECUTION -->
+        <section class="glass rounded-2xl p-8 border-t-4 border-indigo-500 shadow-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                Running the Code
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4">
+                    <p class="text-slate-600 leading-relaxed">
+                        Upon execution, the files were created successfully. However, listing them with a standard <code>ls -l</code> command revealed a sorting issue. Linux sorts lexicographically by default, meaning "10" comes right after "1".
+                    </p>
+                </div>
+                <div class="bg-black p-2 rounded-xl shadow-lg transform transition hover:scale-[1.02] duration-300">
+                    <img src="/Databases/Linux assets/Screenshot 2025-11-21 155347.png" alt="Terminal Execution Unsorted" class="w-full h-auto rounded-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4: SORTING -->
+        <section class="glass rounded-2xl p-8 border-t-4 border-pink-500 shadow-xl">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                <span class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                Fixing the Output
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-black p-2 rounded-xl shadow-lg transform transition hover:scale-[1.02] duration-300 order-2 lg:order-1">
+                    <img src="/Databases/Linux assets/Screenshot 2025-11-21 155408.png" alt="Sorted Terminal Output" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="space-y-4 order-1 lg:order-2">
+                    <p class="text-slate-600 leading-relaxed">
+                        To verify the correct creation order, I used the <code>ls -lv</code> command (natural sort). This displayed the files in the intuitive numerical order (1, 2, 3... 10) rather than the default ASCII sort.
+                    </p>
+                    <div class="bg-green-50 text-green-800 p-4 rounded-lg border border-green-200">
+                        <strong>Success!</strong> All 25 files verified and sorted correctly.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/Neo2701-saint/AWS-reStart-Journey" target="_blank" class="text-slate-400 hover:text-purple-600 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/neo-selepe-a22283348/" target="_blank" class="text-slate-400 hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+            </div>
+            <p class="text-slate-400 text-sm">&copy; 2024 Neo-S. AWS re/Start Journey.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

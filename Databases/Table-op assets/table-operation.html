@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Automation | aws-reStart-Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Animation */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans relative overflow-x-hidden selection:bg-purple-200 selection:text-purple-900">
+
+    <!-- Background Blobs -->
+    <div class="blob bg-blue-300/30 w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply"></div>
+    <div class="blob bg-purple-300/30 w-96 h-96 rounded-full bottom-0 right-0 mix-blend-multiply"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Back to Modules Link -->
+                <a href="/Databases/database.html" class="flex items-center space-x-2 group hover:opacity-80 transition">
+                    <div class="p-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-lg text-white shadow-lg">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Back to Modules</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-4">
+                   <span class="text-slate-500 text-sm">/ compute / tables</span>
+                </div>
+
+                <a href="https://github.com/Neo2701-saint/AWS-reStart-Journey" target="_blank" class="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition shadow-md flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="p-3 bg-blue-100 text-blue-600 rounded-xl">
+                <i class="fa-brands fa-linux text-3xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-slate-900">Table Operation</h1>
+        </div>
+        <p class="text-xl text-slate-600 max-w-3xl">
+            A walkthrough of creating and dropping databases and tables. 
+        </p>
+    </header>
+
+    <!-- Content Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-12">
+
+        <!-- STEP 1: EC2 Login -->
+<section class="glass rounded-2xl p-8 border-t-4 border-blue-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+        Logging into EC2
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-4">
+            <p class="text-slate-600 leading-relaxed">
+                The journey began by accessing the AWS EC2 environment. This step sets the foundation for all subsequent database operations.
+            </p>
+            <ul class="list-disc list-inside text-slate-500 space-y-1 bg-slate-50 p-4 rounded-lg">
+                <li>Access AWS Console</li>
+                <li>Navigate to EC2 Dashboard</li>
+                <li>Select region: <code>us-west-2 (Oregon)</code></li>
+            </ul>
+        </div>
+        <div class="bg-slate-900 p-2 rounded-xl shadow-lg">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194537.png" alt="AWS EC2 Console" class="w-full h-auto rounded-lg">
+        </div>
+    </div>
+</section>
+
+<!-- STEP 2: Terminal Setup -->
+<section class="glass rounded-2xl p-8 border-t-4 border-purple-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-purple-100 text-purple-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+        Connecting to the Instance
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="bg-slate-900 p-2 rounded-xl shadow-lg order-2 lg:order-1">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194557.png" alt="Terminal Access" class="w-full h-auto rounded-lg">
+        </div>
+        <div class="space-y-4 order-1 lg:order-2">
+            <p class="text-slate-600 leading-relaxed">
+                After launching the EC2 instance, I accessed the terminal and navigated to the working directory to prepare for database interaction.
+            </p>
+            <div class="bg-slate-800 text-slate-200 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                <code>cd /home/ec2-user/</code>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STEP 3: Creating a Database -->
+<section class="glass rounded-2xl p-8 border-t-4 border-indigo-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-indigo-100 text-indigo-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+        Creating the Database
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-4">
+            <p class="text-slate-600 leading-relaxed">
+                Using MariaDB, I connected with root credentials and created a new database named <code>world</code>. The <code>SHOW DATABASES</code> command confirmed its successful creation.
+            </p>
+        </div>
+        <div class="bg-black p-2 rounded-xl shadow-lg">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194625.png" alt="MariaDB Create Database" class="w-full h-auto rounded-lg">
+        </div>
+    </div>
+</section>
+
+<!-- STEP 4: Creating the Table -->
+<section class="glass rounded-2xl p-8 border-t-4 border-pink-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+        Creating the Table
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="bg-black p-2 rounded-xl shadow-lg order-2 lg:order-1">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194641.png" alt="Create Country Table" class="w-full h-auto rounded-lg">
+        </div>
+        <div class="space-y-4 order-1 lg:order-2">
+            <p class="text-slate-600 leading-relaxed">
+                I defined the <code>country</code> table with multiple fields including <code>code</code>, <code>name</code>, <code>continent</code>, and more. The <code>SHOW TABLES</code> command confirmed its presence.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- STEP 5: Inspecting Table Schema -->
+<section class="glass rounded-2xl p-8 border-t-4 border-yellow-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-yellow-100 text-yellow-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
+        Inspecting Table Structure
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-4">
+            <p class="text-slate-600 leading-relaxed">
+                The <code>SHOW COLUMNS</code> command revealed the schema of the <code>country</code> table, including data types, nullability, and default values.
+            </p>
+        </div>
+        <div class="bg-black p-2 rounded-xl shadow-lg">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194703.png" alt="Show Columns Output" class="w-full h-auto rounded-lg">
+        </div>
+    </div>
+</section>
+
+<!-- STEP 6: Table Management -->
+<section class="glass rounded-2xl p-8 border-t-4 border-green-500 shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <span class="bg-green-100 text-green-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
+        Table Management
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="bg-black p-2 rounded-xl shadow-lg order-2 lg:order-1">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194720.png" alt="Create and Drop Table" class="w-full h-auto rounded-lg">
+            <img src="/Databases/Table-op assets/Screenshot 2025-11-25 194737.png" alt="Create and Drop Table" class="w-full h-auto rounded-lg">
+        </div>
+        <div class="space-y-4 order-1 lg:order-2">
+            <p class="text-slate-600 leading-relaxed">
+                I created a secondary table <code>city</code>, inspected its structure, and then dropped it using <code>DROP TABLE</code>. The final command confirmed its deletion.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/Neo2701-saint/AWS-reStart-Journey" target="_blank" class="text-slate-400 hover:text-purple-600 transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/neo-selepe-a22283348/" target="_blank" class="text-slate-400 hover:text-blue-600 transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+            </div>
+            <p class="text-slate-400 text-sm">&copy; 2024 Neo-S. AWS re/Start Journey.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
