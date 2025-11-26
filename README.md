@@ -21,3 +21,4 @@ This is an inrtoduction to who Neo is and what she is capable of, starting with 
 - Integrated these principles into work to enhance technical versatility and deliver more efficient, cost-effective, and impactful data science solutions.
 
 - Please refer to the link below to further observe in detail what I have learnt ;)
+- aws-restart-jour.netlify.app
