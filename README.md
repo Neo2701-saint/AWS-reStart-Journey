@@ -20,6 +20,14 @@ This is an inrtoduction to who Neo is and what she is capable of, starting with 
     - Reliability in cloud-based solutions.
 - Integrated these principles into work to enhance technical versatility and deliver more efficient, cost-effective, and impactful data science solutions.
 
+---
+
 - Please refer to the link below to further observe in detail what I have learnt ;)
 
 https://aws-restart-jour.netlify.app/
+
+---
+
+# __**Contact Information**__
+
+Email: neoselepe6@gmail.com
