@@ -14,6 +14,11 @@
 ***Security Core Concepts*
 
 ---
+
+<img width="1290" height="989" alt="image" src="https://github.com/user-attachments/assets/f76ebdaa-4946-4352-8394-4a44da767afd" />
+***Networking Concepts*
+
+---
 <img width="1394" height="992" alt="Screenshot 2025-12-01 183340" src="https://github.com/user-attachments/assets/3af16115-f140-4d90-89a0-48b1b1c18ffc" />
 ***Desktop CSS Building*
 
