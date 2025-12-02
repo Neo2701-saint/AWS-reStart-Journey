@@ -10,6 +10,10 @@
 
 ---
 
+<img width="1300" height="994" alt="image" src="https://github.com/user-attachments/assets/d59c31ed-465a-4234-b6cc-8b7aee1bf264" />
+***Security Core Concepts*
+
+---
 <img width="1394" height="992" alt="Screenshot 2025-12-01 183340" src="https://github.com/user-attachments/assets/3af16115-f140-4d90-89a0-48b1b1c18ffc" />
 ***Desktop CSS Building*
 
