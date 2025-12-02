@@ -24,6 +24,12 @@
 ***File Systems in the Cloud*
 
 ---
+
+<img width="1282" height="981" alt="image" src="https://github.com/user-attachments/assets/054900d2-edbf-483b-8847-ae68befc9dd6" />
+***Databases in Practice*
+
+---
+
 <img width="1394" height="992" alt="Screenshot 2025-12-01 183340" src="https://github.com/user-attachments/assets/3af16115-f140-4d90-89a0-48b1b1c18ffc" />
 ***Desktop CSS Building*
 
