@@ -19,6 +19,11 @@
 ***Networking Concepts*
 
 ---
+
+<img width="1280" height="977" alt="image" src="https://github.com/user-attachments/assets/41ff27dc-6f38-4c1a-b006-9b9ae82f21f5" />
+***File Systems in the Cloud*
+
+---
 <img width="1394" height="992" alt="Screenshot 2025-12-01 183340" src="https://github.com/user-attachments/assets/3af16115-f140-4d90-89a0-48b1b1c18ffc" />
 ***Desktop CSS Building*
 
